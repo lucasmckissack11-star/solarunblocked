@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Solar's Unblocked Games</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+      color: white;
+    }
+
+header {
+  padding: 20px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  background: #1a1a1a;
+
+  background: linear-gradient(90deg, #ff4d6d, #00f2ff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+  letter-spacing: 2px;
+}
+
+    /* SEARCH BAR */
+    #search {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      margin: 15px auto;
+      display: block;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    /* GRID OF GAMES */
+    #home {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .game {
+      position: relative;
+      height: 120px;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .game img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .game .title {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      padding: 5px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .game:hover {
+      transform: scale(1.08) rotate(1deg);
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+
+    /* PLAYER PAGE */
+    #playerPage {
+      display: none;
+      text-align: center;
+      padding: 10px;
+    }
+
+    #gameFrame {
+      width: 90%;
+      height: 80vh;
+      border: none;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #1a1a1a;
+      border-radius: 8px;
+      margin: 10px auto 0;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: crimson;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>Solar's Unblocked Games</header>
+
+<!-- SEARCH BAR -->
+<input type="text" id="search" placeholder="Search games..." onkeyup="searchGames()">
+
+<!-- HOME PAGE -->
+<div id="home">
+  <!-- Slope -->
+  <div class="game">
+    <div onclick="playGame('https://lucasmckissack11-star.github.io/Slope-Game/index.html', 'Slope')">
+      <img src="https://raw.githubusercontent.com/lucasmckissack11-star/unblocked-site-images/main/slope.jpg">
+      <div class="title">Slope</div>
+    </div>
+  </div>
+
+  <!-- Snow Rider 3D -->
+  <div class="game">
+    <div onclick="playGame('https://lucasmckissack11-star.github.io/Snow-Rider3D/index.html', 'Snow Rider 3D')">
+      <img src="https://raw.githubusercontent.com/lucasmckissack11-star/unblocked-site-images/main/snow.webp">
+      <div class="title">Snow Rider 3D</div>
+    </div>
+  </div>
+
+  <!-- Cluster Rush -->
+  <div class="game">
+    <div onclick="playGame('https://lucasmckissack11-star.github.io/nacho-cs.github.io/', 'Cluster Rush')">
+      <img src="https://raw.githubusercontent.com/lucasmckissack11-star/unblocked-site-images/refs/heads/main/cluster-rush-game-icon-1.jpg">
+      <div class="title">Cluster Rush</div>
+    </div>
+  </div>
+
+  <!-- Retro Bowl -->
+  <div class="game">
+    <div onclick="playGame('https://lucasmckissack11-star.github.io/retro-bowl-unblocked/', 'Retro Bowl')">
+      <img src="https://raw.githubusercontent.com/lucasmckissack11-star/unblocked-site-images/refs/heads/main/retrobowl_0.avif">
+      <div class="title">Retro Bowl</div>
+    </div>
+  </div>
+</div>
+
+<!-- PLAYER PAGE -->
+<div id="playerPage">
+  <div class="topbar">
+    <button onclick="goHome()">⬅ Back</button>
+    <span id="gameTitle">Playing...</span>
+  </div>
+  <iframe id="gameFrame"></iframe>
+</div>
+
+<script>
+function playGame(url, title) {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("playerPage").style.display = "block";
+  document.getElementById("gameFrame").src = url;
+  document.getElementById("gameTitle").innerText = title;
+}
+
+function goHome() {
+  document.getElementById("home").style.display = "grid";
+  document.getElementById("playerPage").style.display = "none";
+  document.getElementById("gameFrame").src = "";
+}
+
+// SEARCH FUNCTION
+function searchGames() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let games = document.querySelectorAll(".game");
+
+  games.forEach(game => {
+    let title = game.innerText.toLowerCase();
+game.style.display = title.includes(input) ? "" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
